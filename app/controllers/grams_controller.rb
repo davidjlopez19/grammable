@@ -22,6 +22,7 @@ class GramsController < ApplicationController
     end
   end
 
+
   def new
     @gram = Gram.new
   end
