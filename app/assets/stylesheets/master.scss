@@ -34,8 +34,8 @@ body {
   background-color: #fff;
   border-radius: .25rem;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-  border: 1px solid #e8e8e8;
-  margin-top: 40px;
+  border: none;
+  margin-top: 10px;
   padding: 0;
 }
 
@@ -95,10 +95,6 @@ input {
   margin-left: auto;
 }
 
-.comments {
-  padding: 20px;
-}
-
 .comment {
   font-size: 16px;
 }
@@ -107,4 +103,29 @@ input {
   color: #125688;
   font-weight: bold;
   font-size: 18px;
+  margin: 5px
+}
+
+.comment {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.post-comments {
+  margin: 5px;
+}
+
+.card-header {
+  background-color: white;
+  border: none;
+  padding-left: 5px;
+}
+
+.btn-link {
+  border: none;
+}
+
+.btn:focus {
+  box-shadow: none;
+  text-decoration-color: none;
 }

@@ -12,24 +12,41 @@
           <%= link_to 'Delete', gram_path(gram), method: :delete, data: {confirm: 'Would you like to remove?'}, class: 'float-right' %>
         <% end %>
       </div>
-      <br class="clear-fix" />
+      <%# <br class="clear-fix" /> %>
       <div class="comments">
-        <h3>View Comments</h3>
-        <% gram.comments.each do |comment| %>
-          <div class="comment">
-            <span class="comment_handle">
-              <%= comment.user.email %>
-            </span>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                View Comments
+                </button>
+              </h2>
+            </div>
 
-            <%= comment.message %>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <% gram.comments.each do |comment| %>
+                  <div class="comment">
+                    <span class="comment_handle">
+                      <%= comment.user.email %>
+                    </span>
+
+                    <%= comment.message %>
+                  </div>
+                <% end %>
+                <br class="clear-fix" />
+
+                <div class="post-comments">
+                  <%= simple_form_for Comment.new, url: gram_comments_path(gram) do |f| %>
+                    <%= f.input :message, placeholder: "Add a comment"%>
+                    <%= f.submit 'Post Comment!', class: 'my-btn' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
-        <% end %>
-        <br class="clear-fix" />
-        
-        <%= simple_form_for Comment.new, url: gram_comments_path(gram) do |f| %>
-          <%= f.input :message, placeholder: "Add a comment"%>
-          <%= f.submit 'Post Comment!', class: 'my-btn' %>
-        <% end %>
+        </div>
       </div>  
     </div>
   <% end %>
